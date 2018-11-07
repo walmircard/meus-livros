@@ -2,24 +2,27 @@ import React from 'react';
 import {FlatList, Image, RefreshControl, StyleSheet, Text, View, Button} from 'react-native';
 import Colors from '../constants/Colors';
 
-onAdicionarFavorito = () => {
-}
+onDetalhes = (item) => {
+    console.log(item.preview);
+  }
 
 const renderItem = ({item}) => {
     console.log("item", item);
 
-    return <View style={styles.tweetContainer}>
-        <View style={[styles.innerTweet, styles.contentCol]}>
+    return <View style={styles.container}>
+        <View style={[styles.inner, styles.contentCol]}>
             <Image style={{width: 50, height: 50}} source={{uri: item.urlimagem}}/>
-            <View style={styles.tweetHeader}><Text>Título</Text></View>
-            <View><Text style={styles.tweetContent}>{item.titulo}</Text></View>
-            <View style={styles.tweetHeader}><Text>Sub-Título</Text></View>
-            <View><Text style={styles.tweetContent}>{item.subTitulo}</Text></View>
-            <View style={styles.tweetHeader}><Text>Data Publicação</Text></View>
-            <View><Text style={styles.tweetContent}>{item.dataPublicacao}</Text></View>
-            <View style={styles.tweetHeader}><Text>Descrição</Text></View>
-            <View><Text style={styles.tweetContent}>{item.descricao}</Text></View>
-            <Button onPress={onAdicionarFavorito} title="Adicionar aos favoritos" color="#841584"/>
+            <View style={styles.header}><Text>Título</Text></View>
+            <View><Text style={styles.content}>{item.titulo}</Text></View>
+            <View style={styles.header}><Text>Sub-Título</Text></View>
+            <View><Text style={styles.content}>{item.subTitulo}</Text></View>
+            <View style={styles.header}><Text>Data Publicação</Text></View>
+            <View><Text style={styles.content}>{item.dataPublicacao}</Text></View>
+            <View style={styles.header}><Text>Descrição</Text></View>
+            <View><Text style={styles.content}>{item.descricao}</Text></View>
+            <View style={styles.button}>
+                    <Button onPress={this.onDetalhes(item)} title="Detalhes" color={Colors.tintColor}/>
+            </View>
         </View>
     </View>
 }
@@ -27,7 +30,7 @@ const renderItem = ({item}) => {
 const getItemKey = (item) => item.id;
 
 const LivrosList = (props) => {
-    const {livros, getNextPage} = props;
+    const {livros} = props;
 
     return (
         <FlatList
@@ -40,7 +43,7 @@ const LivrosList = (props) => {
 }
 
 const styles = StyleSheet.create({
-    tweetContainer: {
+    container: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -51,27 +54,22 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderColor: '#ccc'
     },
-    innerTweet: { display: 'flex', flexWrap: 'wrap'},
-    tweetHeader: {
+    inner: { display: 'flex', flexWrap: 'wrap'},
+    header: {
         justifyContent: 'space-between',
         flexDirection: 'row',
         marginRight: 5
     },
-    tweetContent: {
+    content: {
       fontSize: 16,
       fontWeight: '700'
-    },
-    tweetPhoto: {
-        width: 100,
-        height: 100
     },
     contentCol: {
         display: 'flex',
         flex: 8,
     },
-    photoCol: {
-        display: 'flex',
-        flex: 3
+    button: {
+        marginVertical: 5
     }
 })
 

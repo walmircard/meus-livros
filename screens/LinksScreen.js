@@ -1,27 +1,28 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import { ScrollView, StyleSheet, WebView } from 'react-native';
+import { Constants } from 'expo';
 
 export default class LinksScreen extends React.Component {
-  static navigationOptions = {
+  /*static navigationOptions = {
     title: 'Links',
+  };*/
+  static navigationOptions = {
+    title: "Detalhes",
+    headerStyle: {
+      backgroundColor: Constants.manifest.primaryColor,
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
   };
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
-      </ScrollView>
+      <WebView
+        source={{uri: 'https://github.com/facebook/react-native'}}
+        style={{marginTop: 20}}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
-});

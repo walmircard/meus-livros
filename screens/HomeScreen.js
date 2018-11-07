@@ -13,6 +13,7 @@ import Colors from '../constants/Colors';
 import Label from '../components/Label';
 import InputLabel from '../components/InputLabel';
 import LivrosList from '../components/LivroList';
+import {consultarLivros} from '../services/LivroService';
 
 export default class HomeScreen extends React.Component {
 
@@ -74,7 +75,8 @@ export default class HomeScreen extends React.Component {
            subTitulo: item.volumeInfo.subtitle,
            dataPublicacao: item.volumeInfo.publishedDate,
            descricao: item.volumeInfo.description,
-           urlimagem: (item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.smallThumbnail : '')
+           urlimagem: (item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.smallThumbnail : ''),
+           preview: item.volumeInfo.previewLink
         };
       });
 
