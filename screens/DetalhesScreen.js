@@ -1,11 +1,8 @@
 import React from 'react';
-import { ScrollView, StyleSheet, WebView } from 'react-native';
+import { WebView } from 'react-native';
 import { Constants } from 'expo';
 
-export default class LinksScreen extends React.Component {
-  /*static navigationOptions = {
-    title: 'Links',
-  };*/
+export default class DetalhesScreen extends React.Component {
   static navigationOptions = {
     title: "Detalhes",
     headerStyle: {
@@ -20,7 +17,7 @@ export default class LinksScreen extends React.Component {
   render() {
     return (
       <WebView
-        source={{uri: 'https://github.com/facebook/react-native'}}
+        source={{uri: ''}}
         style={{marginTop: 20}}
       />
     );
